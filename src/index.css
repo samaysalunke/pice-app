@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Enhanced color palette with better contrast and elegance */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+    
+    /* Custom Pice brand colors */
+    --pice-blue: 221.2 83.2% 53.3%;
+    --pice-blue-light: 221.2 83.2% 95%;
+    --pice-success: 142.1 76.2% 36.3%;
+    --pice-warning: 38 92% 50%;
+    --pice-error: 0 84.2% 60.2%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* Enhanced button styles with better hover states */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-semibold py-3.5 px-6 rounded-xl 
+           shadow-lg min-h-[48px] hover:shadow-xl hover:bg-primary/90 active:scale-95 transition-all duration-200 ease-out;
+  }
+  
+  .btn-secondary {
+    @apply bg-card text-primary border-2 border-primary font-semibold py-3.5 px-6 rounded-xl
+           min-h-[48px] hover:bg-primary/5 active:scale-95 transition-all duration-200 ease-out
+           shadow-sm hover:shadow-md;
+  }
+  
+  /* Enhanced card styles with better shadows and borders */
+  .card {
+    @apply bg-card text-card-foreground rounded-2xl shadow-lg p-6 border border-border/50
+           hover:shadow-xl transition-all duration-300 ease-out;
+  }
+  
+  .card-compact {
+    @apply bg-card text-card-foreground rounded-xl shadow-md p-4 border border-border/50
+           hover:shadow-lg transition-all duration-200 ease-out;
+  }
+  
+  /* Enhanced input field with better focus states */
+  .input-field {
+    @apply w-full px-4 py-3.5 border border-input rounded-xl focus:ring-2 
+           focus:ring-ring focus:border-primary bg-background transition-all duration-200
+           placeholder:text-muted-foreground/60;
+  }
+  
+  /* Gradient backgrounds */
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(var(--pice-blue)) 0%, hsl(221.2 83.2% 45%) 100%);
+  }
+  
+  .gradient-card {
+    background: linear-gradient(135deg, hsl(var(--pice-blue-light)) 0%, hsl(221.2 83.2% 98%) 100%);
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-xl border border-white/20;
+  }
+  
+  /* Enhanced navigation styles */
+  .nav-item {
+    @apply flex flex-col items-center py-3 px-2 min-h-[60px] transition-all duration-200 ease-out;
+  }
+  
+  .nav-item-active {
+    @apply text-primary bg-primary/10 relative;
+  }
+  
+  .nav-item-active::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-primary rounded-full;
+  }
+  
+  /* Enhanced stats cards */
+  .stat-card {
+    @apply bg-gradient-to-br from-white to-gray-50/50 rounded-2xl p-4 shadow-lg
+           border border-white/50 hover:shadow-xl transition-all duration-300 ease-out;
+  }
+  
+  /* Enhanced action buttons */
+  .action-btn {
+    @apply bg-gradient-to-br from-primary to-primary/90 text-white font-semibold py-4 px-6 
+           rounded-2xl shadow-lg min-h-[52px] hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 ease-out;
+  }
+  
+  /* Enhanced transaction items */
+  .transaction-item {
+    @apply flex items-center justify-between p-4 rounded-xl hover:bg-muted/50 transition-all duration-200
+           border-b border-border/30 last:border-0;
+  }
+  
+  /* Enhanced loading states */
+  .skeleton {
+    @apply animate-pulse bg-muted rounded-lg;
+  }
+  
+  /* Enhanced typography */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent;
+  }
+  
+  /* Enhanced icons */
+  .icon-container {
+    @apply w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg;
+  }
+}
+
+@layer utilities {
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  /* Custom scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Enhanced animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  /* Checkmark animation for payment success */
+  @keyframes checkmark {
+    0% {
+      opacity: 0;
+      transform: scale(0.5) rotate(-45deg);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2) rotate(0deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+}
